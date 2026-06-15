@@ -2,14 +2,6 @@
     <h2 class="text-2xl font-bold text-center text-gray-900 mb-6">Create an Account</h2>
 
     <form wire:submit="submit" class="space-y-6">
-        @if ($errors->any())
-            <div class="mb-4 rounded-md bg-red-50 p-4">
-                @foreach ($errors->all() as $error)
-                    <p class="text-sm text-red-700">{{ $error }}</p>
-                @endforeach
-            </div>
-        @endif
-
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
                 <label for="first_name" class="block text-sm font-medium text-gray-700 mb-1">First Name <span class="text-red-500">*</span></label>
