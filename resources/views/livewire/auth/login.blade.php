@@ -2,11 +2,11 @@
     <h2 class="text-2xl font-bold text-center text-gray-900 mb-6">Welcome Back</h2>
 
     <form wire:submit="submit" class="space-y-6">
-        @if ($errors->any())
+        @error('auth')
             <div class="mb-4 rounded-md bg-red-50 p-4">
-                <p class="text-sm text-red-700">Invalid credentials. Please try again.</p>
+                <p class="text-sm text-red-700">{{ $message }}</p>
             </div>
-        @endif
+        @enderror
 
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>

@@ -51,8 +51,7 @@ class Login extends Component
                 'password' => $this->password,
             ], $this->remember);
         } catch (AuthenticationException $e) {
-            $this->addError('email', 'Invalid credentials');
-            $this->addError('password', 'Invalid credentials');
+            $this->addError('auth', $e->getMessage());
 
             return;
         }

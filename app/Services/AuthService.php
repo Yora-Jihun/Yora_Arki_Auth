@@ -31,7 +31,17 @@ class AuthService
     {
         $email = EmailFormatter::sanitize($credentials['email']);
 
-        if ($email === null || ! Auth::attempt([
+        if ($email === null) {
+            throw new AuthenticationException('This account is not found');
+        }
+
+        $user = User::where('email', $email)->first();
+
+        if ($user === null) {
+            throw new AuthenticationException('This account is not found');
+        }
+
+        if (! Auth::attempt([
             'email' => $email,
             'password' => $credentials['password'],
         ], $remember)) {
@@ -39,20 +49,20 @@ class AuthService
                 $this->forgetRememberCookie();
             }
 
-            throw new AuthenticationException('Invalid credentials');
+            throw new AuthenticationException('Incorrect Password');
         }
 
         if (! $remember) {
             $this->forgetRememberCookie();
         }
 
-        $user = Auth::user();
+        $authenticatedUser = Auth::user();
 
-        if (! $user instanceof User) {
-            throw new AuthenticationException('Invalid credentials');
+        if (! $authenticatedUser instanceof User) {
+            throw new AuthenticationException('This account is not found');
         }
 
-        return $user;
+        return $authenticatedUser;
     }
 
     private function forgetRememberCookie(): void
