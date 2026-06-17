@@ -279,4 +279,5 @@ return [
         'max_calls' => 50,           // Maximum method calls per request
         'max_components' => 200,     // Maximum components per batch request
     ],
+
 ];
