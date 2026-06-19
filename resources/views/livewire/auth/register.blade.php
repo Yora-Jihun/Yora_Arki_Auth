@@ -80,57 +80,25 @@
                                 ])
                             </div>
 
-                            <div>
+                            <div class="relative">
                                 <label for="suffix" class="block text-sm font-medium text-slate-700 mb-2">
                                     Suffix
                                 </label>
-                                <div class="relative">
-                                    <select
-                                        id="suffix"
-                                        name="suffix"
-                                        wire:model="suffix"
-                                        class="block w-full border border-gray-200 bg-white px-4 py-3 pr-10 text-sm text-slate-900 outline-none transition duration-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 appearance-none"
-                                        >
-                                        <option value="">None</option>
-                                        <option value="Jr">Jr</option>
-                                        <option value="Sr">Sr</option>
-                                        <option value="II">II</option>
-                                        <option value="III">III</option>
-                                        <option value="IV">IV</option>
-                                    </select>
-                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                        <svg class="h-4 w-4 text-slate-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0L5.293 8.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                            <div>
-                                <label for="suffix" class="block text-sm font-medium text-slate-700 mb-2">
-                                    Suffix
-                                </label>
-                                <div class="relative">
-                                    <select
-                                        id="suffix"
-                                        name="suffix"
-                                        wire:model="suffix"
-                                        class="block w-full border border-gray-200 bg-white px-4 py-3 pr-10 text-sm text-slate-900 outline-none transition duration-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 appearance-none"
-                                        >
-                                        <option value="">None</option>
-                                        <option value="Jr">Jr</option>
-                                        <option value="Sr">Sr</option>
-                                        <option value="II">II</option>
-                                        <option value="III">III</option>
-                                        <option value="IV">IV</option>
-                                    </select>
-                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                        <svg class="h-4 w-4 text-slate-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0L5.293 8.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                </div>
+                                <select
+                                    id="suffix"
+                                    name="suffix"
+                                    wire:model="suffix"
+                                    class="block w-full border border-gray-200 bg-white px-4 py-3 pr-10 text-sm text-slate-900 outline-none transition duration-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 appearance-none"
+                                    style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2716%27 height=%2716%27 fill=%27none%27 stroke=%27%239ca3af%27 stroke-width=%272%27 viewBox=%270 0 24 24%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px;"
+                                    >
+                                    <option value="">None</option>
+                                    <option value="Jr.">Jr.</option>
+                                    <option value="Sr.">Sr.</option>
+                                    <option value="II">II</option>
+                                    <option value="III">III</option>
+                                    <option value="IV">IV</option>
+                                    <option value="V">V</option>
+                                </select>
                             </div>
                         </div>
 

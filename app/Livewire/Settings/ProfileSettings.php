@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Settings;
 
+use App\Support\NameFormatter;
 use Illuminate\View\View;
 use Livewire\Component;
 
@@ -59,10 +60,12 @@ class ProfileSettings extends Component
                 'email' => $this->email,
                 'country_code' => $this->country_code,
                 'contact_to' => $this->contact_to,
+                'fullname' => NameFormatter::full($this->first_name, $this->middle_name, $this->last_name, $this->suffix ?: null),
             ]);
         }
 
         session()->flash('status', 'Profile updated');
+        $this->redirect(route('profile-settings'), navigate: true);
     }
 
     public function render(): View
