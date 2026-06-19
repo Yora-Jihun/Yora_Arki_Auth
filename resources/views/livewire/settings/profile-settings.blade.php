@@ -102,7 +102,7 @@
                             <option value="+852">+852</option>
                             <option value="+880">+880</option>
                         </select>
-                        <input id="contact_to" type="text" wire:model="contact_to" class="flex-1 bg-gray-50 px-3 py-2 text-sm text-gray-900 border border-gray-100  focus:outline-none focus:border-blue-300 focus:bg-white transition">
+                        <input id="contact_to" type="text" wire:model="contact_to" class="min-w-0 flex-1 bg-gray-50 px-3 py-2 text-sm text-gray-900 border border-gray-100  focus:outline-none focus:border-blue-300 focus:bg-white transition">
                     </div>
                     @error('contact_to')
                         <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
