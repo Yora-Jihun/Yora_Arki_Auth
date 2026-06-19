@@ -84,7 +84,7 @@
          </div>
      </div>
 
-    <nav class="flex-1 overflow-y-auto px-3 space-y-0.5">
+    <nav class="flex-1 overflow-y-auto overflow-x-hidden px-3 space-y-0.5">
         <a href="{{ route('dashboard') }}" wire:navigate
            class="sidebar-item flex items-center gap-2.5 px-3 py-2 text-[13px] text-gray-700 {{ $active === 'dashboard' ? 'active' : '' }}">
             <svg class="w-[18px] h-[18px] text-gray-500 flex-shrink-0 {{ $active === 'dashboard' ? '!text-blue-600' : '' }}" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -150,40 +150,66 @@
      </div>
  </aside>
 
-  <script>
-      document.addEventListener('DOMContentLoaded', function () {
-          const sidebar = document.getElementById('sidebar');
-          const main = document.getElementById('mainContent');
-          const toggle = document.getElementById('sidebarToggle');
-          const collapseIcon = document.getElementById('collapseIcon');
+   <script>
+       function initSidebar() {
+           const sidebar = document.getElementById('sidebar');
+           const main = document.getElementById('mainContent');
+           const toggle = document.getElementById('sidebarToggle');
+           const collapseIcon = document.getElementById('collapseIcon');
 
-          if (!sidebar) return;
+           if (!sidebar) return;
 
-          if (toggle) {
-              toggle.addEventListener('click', function () {
-                  const isCollapsed = sidebar.classList.toggle('collapsed');
-                  if (isCollapsed) {
-                      sidebar.style.width = '76px';
-                      if (main) main.style.marginLeft = '76px';
-                  } else {
-                      sidebar.style.width = '250px';
-                      if (main) main.style.marginLeft = '250px';
-                  }
-              });
-          }
+           if (toggle) {
+               toggle.removeEventListener('click', handleToggle);
+               toggle.addEventListener('click', handleToggle);
+           }
 
-          window.addEventListener('resize', function () {
-              if (window.innerWidth < 768) {
-                  if (!sidebar.classList.contains('collapsed')) {
-                      sidebar.classList.add('collapsed');
-                  }
-                  sidebar.style.width = '76px';
-                  if (main) main.style.marginLeft = '76px';
-              } else {
-                  sidebar.classList.remove('collapsed');
-                  sidebar.style.width = '250px';
-                  if (main) main.style.marginLeft = '250px';
-              }
-          });
-      });
-  </script>
+           updateSidebarState();
+
+           window.removeEventListener('resize', handleResize);
+           window.addEventListener('resize', handleResize);
+       }
+
+       function handleToggle() {
+           const sidebar = document.getElementById('sidebar');
+           const main = document.getElementById('mainContent');
+           const isCollapsed = sidebar.classList.toggle('collapsed');
+           if (isCollapsed) {
+               sidebar.style.width = '76px';
+               if (main) main.style.marginLeft = '76px';
+           } else {
+               sidebar.style.width = '250px';
+               if (main) main.style.marginLeft = '250px';
+           }
+       }
+
+       function handleResize() {
+           updateSidebarState();
+       }
+
+       function updateSidebarState() {
+           const sidebar = document.getElementById('sidebar');
+           const main = document.getElementById('mainContent');
+           if (!sidebar) return;
+
+           if (window.innerWidth < 768) {
+               if (!sidebar.classList.contains('collapsed')) {
+                   sidebar.classList.add('collapsed');
+               }
+               sidebar.style.width = '76px';
+               if (main) main.style.marginLeft = '76px';
+           } else {
+               sidebar.classList.remove('collapsed');
+               sidebar.style.width = '250px';
+               if (main) main.style.marginLeft = '250px';
+           }
+       }
+
+       document.addEventListener('DOMContentLoaded', function () {
+           initSidebar();
+       });
+
+       document.addEventListener('livewire:navigated', function () {
+           initSidebar();
+       });
+   </script>

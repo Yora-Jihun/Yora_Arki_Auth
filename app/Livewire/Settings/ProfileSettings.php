@@ -62,7 +62,7 @@ class ProfileSettings extends Component
             ]);
         }
 
-        $this->dispatch('notify', 'Profile updated');
+        session()->flash('status', 'Profile updated');
     }
 
     public function render(): View
